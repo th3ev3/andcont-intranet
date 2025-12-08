@@ -578,3 +578,24 @@ footer p {
 .close-btn:hover {
     color: #000;
 }
+
+
+/* --- ESTILO PARA O BOTÃO/LINK "VER MAIS" NOS CARDS --- */
+.ver-mais-btn {
+    display: block; /* Ocupa a largura total */
+    text-align: right;
+    margin-top: 15px; /* Espaço após a última lista */
+    padding-top: 10px;
+    border-top: 1px dashed #f0f0f0;
+    
+    color: var(--primary-gold); /* Cor da marca para destaque */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: color 0.2s, padding-right 0.2s;
+}
+
+.ver-mais-btn:hover {
+    color: var(--primary-blue);
+    padding-right: 5px; /* Pequeno efeito de movimento ao passar o mouse */
+}

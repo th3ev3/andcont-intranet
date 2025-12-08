@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // --- 1. Dados e Conteúdo Fictício (Com Tipo e Fonte) ---
+    // --- 1. Dados e Conteúdo Fictício (Com Tipo, Fonte e DESTAQUE) ---
     const conteudos = {
         'novo-ponto': { 
             titulo: "Lançamento Oficial: Novo Sistema de Ponto AndCont", 
             data: "05/Dezembro/2025", 
             tipo: "Notícia", 
             fonte: "RH",
+            destaque: true,
             texto: `Prezado Colaborador,
             
 É com satisfação que anunciamos a migração para o nosso novo sistema de Ponto Eletrônico, mais moderno e com integração total ao sistema de Banco de Horas.
@@ -26,14 +27,8 @@ RH e TI AndCont.`
             data: "01/Dezembro/2025",
             tipo: "Notícia",
             fonte: "RH",
+            destaque: true,
             texto: "O período de agendamento das férias para o ciclo de 2026 está aberto. Por favor, acesse o Portal RH para enviar sua solicitação até o dia 15/12."
-        },
-        'o-que-devo-saber': { 
-            titulo: "Guia Rápido: Primeiro Acesso e Estrutura", 
-            data: "Atualizado em 20/Novembro/2025", 
-            tipo: "Documento", 
-            fonte: "TI",
-            texto: "Este guia contém todas as informações essenciais para quem acaba de se juntar ao nosso time. Inclui senhas de Wi-Fi, acesso a pastas compartilhadas e organograma básico." 
         },
         'ramais': { 
             titulo: "Contatos e Ramais Chave (TI, RH, Financeiro)", 
@@ -54,6 +49,7 @@ RH e TI AndCont.`
             data: "03/Dezembro/2025", 
             tipo: "Evento", 
             fonte: "Eventos",
+            destaque: true,
             texto: "A gincana começa em breve! Leia as regras oficiais, confira sua equipe e prepare-se para as tarefas que valem o grande prêmio!" 
         },
         'uso-celular': {
@@ -68,9 +64,52 @@ RH e TI AndCont.`
             data: "30/Setembro/2025",
             tipo: "Evento",
             fonte: "Comunicação",
+            destaque: false,
             texto: "Galeria de fotos e resumo dos eventos que rolaram no mês de Setembro, incluindo o Happy Hour de Primavera!"
         },
-        // Adicione outros conteúdos conforme os 'data-id' do HTML
+        'politica-antiga': {
+            titulo: "Política de Home Office (2024)",
+            data: "01/Janeiro/2024",
+            tipo: "Política",
+            fonte: "RH",
+            destaque: false,
+            texto: "Regras antigas de Home Office, substituídas em 2025."
+        },
+        'cursos-acessos': { 
+            titulo: "Cursos e Plataformas de Treinamento", 
+            data: "01/Agosto/2025", 
+            tipo: "Documento", 
+            fonte: "RH",
+            texto: "Acesso às plataformas de EAD e treinamentos obrigatórios." 
+        },
+        'ponto-banco': { 
+            titulo: "Ponto Eletrônico e Banco de Horas", 
+            data: "01/Dezembro/2025", 
+            tipo: "Documento", 
+            fonte: "RH",
+            texto: "Instruções sobre como consultar e gerenciar seu ponto e banco de horas." 
+        },
+        'politica-emprestimo': { 
+            titulo: "Política de Empréstimo Consignado", 
+            data: "10/Junho/2025", 
+            tipo: "Política", 
+            fonte: "Financeiro", 
+            texto: "Regras e procedimentos para solicitação de empréstimos consignados." 
+        },
+        'lgpd': { 
+            titulo: "Compliance e LGPD", 
+            data: "01/Julho/2025", 
+            tipo: "Política", 
+            fonte: "Compliance", 
+            texto: "Diretrizes de conformidade com a Lei Geral de Proteção de Dados." 
+        },
+        'gestao-beneficios': { 
+            titulo: "Gestão de benefícios e ferramentas", 
+            data: "01/Março/2025", 
+            tipo: "Documento", 
+            fonte: "RH", 
+            texto: "Como gerenciar planos de saúde, vale-refeição e outras ferramentas." 
+        },
     };
 
     // --- 2. Elementos Globais ---
@@ -85,241 +124,229 @@ RH e TI AndCont.`
     const filterNavLinks = document.querySelectorAll('.filter-nav');
     const homeLink = document.querySelector('.main-nav a[href="#home"]');
 
-    // --- 3. Lógica do Acordeão ---
+    const notificationPopup = document.getElementById('new-post-notification');
+    const popupLink = document.getElementById('popup-link');
+    const closePopupBtn = document.getElementById('close-popup-btn'); 
+
+    // --- 3. Lógica do Acordeão (Agora sempre FECHADO por padrão) ---
+    document.querySelectorAll('.acordeao-content').forEach(content => {
+        content.classList.remove('open'); // garante FECHADO ao carregar
+    });
+
     document.querySelectorAll('.acordeao-header').forEach(header => {
         header.addEventListener('click', function() {
             let content = this.parentElement.querySelector('.acordeao-content');
-
             if (content) {
                 content.classList.toggle('open');
             }
         });
     });
 
-    // --- 4. Funções de Navegação e Conteúdo ---
+    // --- 4. Lógica de conteúdo, timeline, popup e navegação (inalterados) ---
+
+    function linkClickHandler(e) {
+        e.preventDefault();
+        const contentId = this.getAttribute('data-id');
+        if (contentId) {
+            exibirPublicacao(contentId);
+        }
+    }
+
+    function adicionarListenerAosLinks() {
+        document.querySelectorAll('.item-link').forEach(link => {
+            link.removeEventListener('click', linkClickHandler); 
+        });
+        document.querySelectorAll('.item-link').forEach(link => {
+            link.addEventListener('click', linkClickHandler);
+        });
+    }
+
+    function renderizarCardsDestaque() {
+        const cardNoticias = document.querySelector('.noticias-quentinhas .clean-list');
+        const cardEventos = document.querySelector('.eventos .acordeao-content');
+
+        cardNoticias.innerHTML = '';
+        cardEventos.innerHTML = '';
+
+        const destaques = Object.keys(conteudos)
+            .map(id => ({ id: id, ...conteudos[id] }))
+            .filter(item => item.destaque === true);
+
+        destaques.sort((a, b) => {
+            const parseDate = (d) => {
+                const [day, month, year] = d.split('/');
+                return new Date(`${year}/${month}/${day}`);
+            };
+            return parseDate(b.data) - parseDate(a.data);
+        });
+
+        destaques.forEach(item => {
+            const li = document.createElement('li');
+            const link = document.createElement('a');
+            
+            link.href = '#';
+            link.classList.add('item-link');
+            link.setAttribute('data-id', item.id);
+            
+            let prefixo = item.tipo === "Notícia" ? "📢" : (item.tipo === "Evento" ? "🎉" : "");
+            link.innerHTML = `${prefixo} ${item.titulo}. `;
+            
+            li.appendChild(link);
+
+            if (item.tipo === 'Notícia' && cardNoticias.children.length < 3) {
+                cardNoticias.appendChild(li);
+            }
+            if (item.tipo === 'Evento' && cardEventos.children.length < 2) {
+                cardEventos.appendChild(li);
+            }
+        });
+
+        adicionarListenerAosLinks();
+    }
 
     function exibirPublicacao(id) {
         const comunicado = conteudos[id];
-        
-        if (!comunicado) {
-            alert("Conteúdo não encontrado.");
-            return;
-        }
+        if (!comunicado) return alert("Conteúdo não encontrado.");
 
-        // 1. Preenche o conteúdo da nova página
         document.getElementById('publicacaoTitulo').textContent = comunicado.titulo;
         document.getElementById('publicacaoData').textContent = `Publicado em: ${comunicado.data}`;
-        document.getElementById('publicacaoTexto').textContent = comunicado.texto;
+        document.getElementById('publicacaoTexto').innerHTML = comunicado.texto
+            .replace(/\n/g, '<br>')
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         
-        // 2. Oculta Home/Timeline e exibe Publicação
         intranetHome.style.display = 'none';
         timelinePage.classList.remove('active-page');
         publicacaoPage.classList.add('active-page');
 
         window.scrollTo(0, 0); 
     }
-    
+
     function gerarTimeline(filtro) {
         const timelineContent = document.getElementById('timeline-content');
-        
-        // 1. Converte e Ordena (Mais Recente Primeiro)
-        let itensArray = Object.keys(conteudos).map(id => ({
-            id: id,
-            ...conteudos[id]
-        }));
+        let itensArray = Object.keys(conteudos).map(id => ({ id, ...conteudos[id] }));
 
         itensArray.sort((a, b) => {
-            const dateA = new Date(a.data.split('/').reverse().join('/'));
-            const dateB = new Date(b.data.split('/').reverse().join('/'));
-            return dateB - dateA; 
+            const parseDate = (d) => {
+                const [day, month, year] = d.split('/');
+                return new Date(`${year}/${month}/${day}`);
+            };
+            return parseDate(b.data) - parseDate(a.data);
         });
 
-        // 2. Constrói o HTML (Filtros e Lista)
-        let htmlContent = `<div class="timeline-filtros">
+        let htmlContent = `
+        <div class="timeline-filtros">
             <label>Filtrar por Tipo:</label>
             <select id="filtroTipo">
                 <option value="">Todos</option>
                 <option value="Notícia">Notícias</option>
                 <option value="Política">Políticas</option>
                 <option value="Evento">Eventos</option>
+                <option value="Documento">Documentos</option>
             </select>
         </div>
         <ul id="timelineList" class="timeline-list">`;
-        
+
         itensArray.forEach(item => {
-            const itemTipo = item.tipo;
-            // Define se o item deve ser exibido ou escondido inicialmente
-            const displayStyle = (filtro === '' || itemTipo === filtro) ? 'flex' : 'none';
+            const displayStyle = (filtro === '' || item.tipo === filtro) ? 'flex' : 'none';
 
             htmlContent += `
-                <li class="timeline-item" data-tipo="${itemTipo}" style="display: ${displayStyle};">
+                <li class="timeline-item" data-tipo="${item.tipo}" style="display: ${displayStyle};">
                     <span class="timeline-date">${item.data}</span>
                     <span class="timeline-source">[${item.fonte}]</span>
                     <a href="#" class="item-link" data-id="${item.id}">${item.titulo}</a>
-                    <span class="timeline-type">${itemTipo}</span>
-                </li>
-            `;
+                    <span class="timeline-type">${item.tipo}</span>
+                </li>`;
         });
 
         htmlContent += `</ul>`;
         timelineContent.innerHTML = htmlContent;
 
-        // 3. Configura o filtro <select> para o valor inicial
         const filtroSelect = document.getElementById('filtroTipo');
-        if (filtroSelect) {
-            filtroSelect.value = filtro;
-        }
+        filtroSelect.value = filtro;
 
-        // 4. Adiciona lógica de Filtro no Select
-        if (filtroSelect) {
-            filtroSelect.addEventListener('change', function() {
-                const filtroAtual = this.value;
-                document.querySelectorAll('#timelineList .timeline-item').forEach(li => {
-                    const itemTipo = li.getAttribute('data-tipo'); 
-                    if (filtroAtual === '' || itemTipo === filtroAtual) {
-                        li.style.display = 'flex';
-                    } else {
-                        li.style.display = 'none';
-                    }
-                });
+        filtroSelect.addEventListener('change', function() {
+            const filtroAtual = this.value;
+            document.querySelectorAll('#timelineList .timeline-item').forEach(li => {
+                li.style.display = (filtroAtual === '' || li.getAttribute('data-tipo') === filtroAtual)
+                    ? 'flex' : 'none';
             });
-        }
+        });
 
-        // 5. Re-adiciona o Listener para os links de publicação criados
         document.querySelectorAll('#timelineList .item-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const contentId = this.getAttribute('data-id');
-                if (contentId) {
-                    exibirPublicacao(contentId);
-                }
-            });
+            link.addEventListener('click', linkClickHandler);
         });
     }
 
     function abrirTimeline(filtroInicial = '') {
-        // Oculta a Home e a Publicação
         intranetHome.style.display = 'none';
         publicacaoPage.classList.remove('active-page');
 
-        // Gera e Exibe a Timeline
         gerarTimeline(filtroInicial); 
         timelinePage.classList.add('active-page');
         window.scrollTo(0, 0); 
     }
 
-    // --- 5. Event Listeners ---
-
-    // A. Links do Dashboard (Abre Publicação)
-    itemLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const contentId = this.getAttribute('data-id');
-            if (contentId) {
-                exibirPublicacao(contentId);
-            }
-        });
-    });
-
-    // B. Botão Voltar da Publicação (Volta para Home)
     voltarBtn.addEventListener('click', function() {
         publicacaoPage.classList.remove('active-page');
         intranetHome.style.display = 'block';
         window.scrollTo(0, 0); 
     });
 
-    // C. Links da NAV Filtrada (Abre Timeline Filtrada)
     filterNavLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const filtro = this.getAttribute('data-filter');
-            
-            // Ativa o link na NAV
+
             document.querySelectorAll('.main-nav .nav-item').forEach(nav => nav.classList.remove('active'));
             this.classList.add('active');
             
-            abrirTimeline(filtro); // Abre a timeline já filtrada
+            abrirTimeline(filtro);
         });
     });
 
-    // D. Link 'Início' (Volta para Home - CORRIGIDO)
     homeLink.addEventListener('click', function(e) {
         e.preventDefault();
         
-        // Ativa o link 'Início'
         document.querySelectorAll('.main-nav .nav-item').forEach(nav => nav.classList.remove('active'));
         this.classList.add('active');
 
-        // Oculta as outras páginas
         publicacaoPage.classList.remove('active-page');
         timelinePage.classList.remove('active-page');
         
-        // Exibe a Home
         intranetHome.style.display = 'block'; 
-        
         window.scrollTo(0, 0);
     });
 
-    // E. Botão Voltar da Timeline (Volta para Home)
     voltarTimelineBtn.addEventListener('click', function() {
         timelinePage.classList.remove('active-page');
         intranetHome.style.display = 'block';
         
-        // Ativa o link 'Início' na nav
         document.querySelectorAll('.main-nav .nav-item').forEach(nav => nav.classList.remove('active'));
-        document.querySelector('.main-nav a[href="#home"]').classList.add('active');
+        homeLink.classList.add('active');
         
         window.scrollTo(0, 0); 
     });
+
+    function exibirNotificacao() {
+        notificationPopup.classList.remove('hidden-js'); 
+        setTimeout(() => {
+            notificationPopup.classList.add('visible-right');
+        }, 100); 
+    }
+
+    function fecharNotificacao() {
+        notificationPopup.classList.remove('visible-right');
+        setTimeout(() => {
+            notificationPopup.classList.add('hidden-js');
+        }, 400); 
+    }
+
+    closePopupBtn.addEventListener('click', fecharNotificacao);
+    popupLink.addEventListener('click', fecharNotificacao);
+
+    renderizarCardsDestaque();
+
+    notificationPopup.classList.add('hidden-js'); 
+    setTimeout(exibirNotificacao, 2000); 
+    
 });
-
-
-// Localize os novos elementos (adicione no início do scripts.js)
-const notificationPopup = document.getElementById('new-post-notification');
-const popupLink = document.getElementById('popup-link');
-const closePopupBtn = document.getElementById('close-popup-btn'); // Novo ID para o X
-
-// --- Nova Lógica para Exibir/Fechar o Popup ---
-
-function exibirNotificacao() {
-    // 1. Remove a classe que esconde o elemento
-    notificationPopup.classList.remove('hidden-js'); 
-    
-    // 2. Adiciona a classe que anima o elemento (entra pela direita)
-    // Usamos um timeout para que a animação funcione corretamente
-    setTimeout(() => {
-        notificationPopup.classList.add('visible-right');
-    }, 100); 
-}
-
-function fecharNotificacao() {
-    // 1. Remove a classe que anima para fora da tela
-    notificationPopup.classList.remove('visible-right');
-    
-    // 2. Adiciona a classe que o esconde completamente após a animação (0.4s do CSS)
-    setTimeout(() => {
-        notificationPopup.classList.add('hidden-js');
-    }, 400); 
-}
-
-// --- Listeners para o Popup ---
-
-// Listener para o botão 'X' fechar o pop-up
-closePopupBtn.addEventListener('click', fecharNotificacao);
-
-// Listener para o link do pop-up abrir a publicação
-// O clique será capturado pelo listener global de .item-link que já existe, 
-// mas é bom ter uma ação de fechar aqui também.
-popupLink.addEventListener('click', fecharNotificacao);
-
-
-// --- Chamada Inicial ---
-// Chame a função para exibir o popup assim que a página carregar (no final do DOMContentLoaded)
-
-// Inicialmente, adicione a classe de esconder para garantir que não apareça antes do JS
-notificationPopup.classList.add('hidden-js'); 
-
-// Chame a função para exibição após 2 segundos de carregamento
-setTimeout(exibirNotificacao, 2000); 
-
-// Fim do bloco DOMContentLoaded
