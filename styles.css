@@ -1,0 +1,580 @@
+/* --- Paleta de Cores e Variáveis da Logo --- */
+:root {
+    /* Cores que você definiu: Laranja, Ouro, Rosa */
+    --primary-blue: #ff7a00; /* Usei o Laranja mais forte como 'primary-blue' */
+    --primary-gold: #ffb100;
+
+    /* Gradiente igual ao da logo enviada */
+    --grad-horizontal: linear-gradient(to right, #ffb100, #ff7a00, #ff006a);
+    --grad-vertical: linear-gradient(to bottom, #ffb100, #ff7a00, #ff006a);
+
+    --grad-soft: linear-gradient(135deg, #ffffff, #f7f4ef);
+
+    --bg-light: #f9f9f9;
+    --card-bg: #ffffff;
+    --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Base --- */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--grad-soft);
+    color: #444;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* MELHORIA 1: Título Principal com Gradiente de Borda */
+.page-main-title {
+    color: #333;
+    font-size: 1.8em;
+    padding-bottom: 10px;
+    
+    /* Linha decorativa que usa o gradiente */
+    border-bottom: 3px solid transparent; 
+    border-image: var(--grad-horizontal);
+    border-image-slice: 1;
+    
+    margin: 25px 0 30px 0;
+    font-weight: 700; 
+    display: inline-block; 
+}
+
+/* --- HEADER PREMIUM COM DEGRADÊ --- */
+.clean-header {
+    background: linear-gradient(to right, #ffffff, #f2efe8);
+    border-bottom: 4px solid var(--primary-gold);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    gap: 20px; 
+}
+
+/* Área da logo */
+.logo-area {
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    height: 45px; 
+    width: auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+.site-logo:hover {
+    transform: scale(1.05);
+}
+
+.header-title {
+    font-size: 1.2em;
+    color: #555;
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+/* Barra de Navegação */
+.main-nav {
+    display: flex;
+    flex-grow: 1; 
+    justify-content: center; 
+    gap: 25px;
+}
+
+.nav-item {
+    color: #777;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.2s;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    color: var(--primary-blue);
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--grad-horizontal);
+    border-radius: 2px;
+}
+
+/* Área do Usuário */
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+.user-name {
+    color: #444;
+}
+
+.profile-btn {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.profile-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* --- GRID DE CARDS --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 80px; 
+}
+
+/* Animação para o Destaque de Notícias (MELHORIA 2) */
+@keyframes urgentGlow {
+    from {
+        box-shadow: 0 4px 15px rgba(255, 122, 0, 0.1), 0 0 0 0 rgba(255, 122, 0, 0.0);
+    }
+    to {
+        box-shadow: 0 6px 20px rgba(255, 122, 0, 0.2), 0 0 0 8px rgba(255, 122, 0, 0);
+    }
+}
+
+.card-section {
+    background: linear-gradient(to bottom, #ffffff, #fbf8f2);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-subtle);
+    margin-bottom: 20px;
+    border-top: 5px solid var(--primary-blue);
+    transition: transform 0.2s;
+}
+
+
+
+.card-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Títulos dos cards (MELHORIA 3: Sublinhado com Gradiente) */
+.card-section h2 {
+    color: var(--primary-blue);
+    font-size: 1.5em; /* Um pouco maior */
+    
+    /* Linha inferior usando um gradiente sutil */
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(to right, var(--primary-blue), #eee 80%);
+    border-image-slice: 1;
+
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+/* --- LISTAS E LINKS --- */
+.clean-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.clean-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #f0f0f0;
+}
+
+/* Links de Ação (MELHORIA 4: Ícone de Seta) */
+.clean-list a {
+    color: #555;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.clean-list a:hover {
+    color: var(--primary-blue);
+}
+
+/* Estilo para links de item com seta */
+.item-link {
+    position: relative;
+    padding-right: 15px; 
+}
+
+.item-link::after {
+    content: '→'; /* Seta */
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-gold); 
+    font-weight: 800;
+    font-size: 0.9em;
+    transition: transform 0.2s;
+}
+
+.item-link:hover::after {
+    color: var(--primary-blue);
+    transform: translateY(-50%) translateX(3px); 
+}
+
+/* Acordeão (MELHORIA 5: Ícone de Expansão) */
+.acordeao-header {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #444; 
+    cursor: pointer;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.acordeao-header:hover {
+    color: var(--primary-blue);
+}
+
+.acordeao-header span::after {
+    content: '▼'; 
+    margin-left: 10px;
+    font-size: 0.8em;
+    transition: transform 0.3s ease-in-out;
+    color: var(--primary-gold);
+}
+
+/* O conteúdo vem logo após o header, usamos o seletor irmão geral para afetar o ícone de expansão */
+.acordeao-content.open + .acordeao-header span::after {
+    transform: rotate(180deg);
+}
+
+.acordeao-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    padding-left: 10px;
+}
+
+.acordeao-content.open {
+    max-height: 300px;
+    padding-top: 10px;
+}
+
+/* --- PÁGINAS OCULTAS --- */
+.hidden-page {
+    display: none;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 40px auto;
+    background: linear-gradient(to bottom, #ffffff, #f7f3eb);
+    border-radius: 12px;
+    box-shadow: var(--shadow-subtle);
+    animation: fadeIn 0.5s;
+    min-height: 60vh;
+}
+
+#publicacao-page.active-page,
+#timeline-page.active-page {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page-title {
+    color: var(--primary-blue);
+    font-size: 2.2em;
+    margin-top: 20px;
+}
+.page-date {
+    color: #888;
+    font-style: italic;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.publicacao-content {
+    white-space: pre-wrap; 
+}
+
+.back-button {
+    background: var(--grad-horizontal);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    display: block; 
+    width: fit-content;
+}
+
+.back-button:hover {
+    opacity: 0.9;
+}
+
+/* --- Timeline (Arquivo Histórico) --- */
+.timeline-content {
+    padding: 20px 0;
+}
+
+.timeline-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 3px solid #eee; 
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0 15px 30px; 
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}
+
+.timeline-item:hover {
+    background-color: #fcfcfc;
+}
+
+/* Bolinha da timeline */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -9px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background: var(--primary-blue); 
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px #fff; 
+}
+
+.timeline-date {
+    font-size: 0.9em;
+    color: #888;
+    min-width: 120px;
+    font-weight: 500;
+}
+
+.timeline-source {
+    font-size: 0.9em;
+    color: var(--primary-gold); 
+    margin-right: 15px;
+    font-weight: 600;
+    min-width: 100px;
+}
+
+.timeline-item a {
+    flex-grow: 1; 
+    color: #444;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.timeline-item a:hover {
+    color: var(--primary-blue);
+}
+
+.timeline-type {
+    background-color: #f0f0f0;
+    color: #777;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 20px;
+    font-weight: 500;
+    min-width: 80px;
+    text-align: center;
+}
+
+.timeline-filtros {
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.timeline-filtros label {
+    font-weight: 600;
+    color: #555;
+}
+.timeline-filtros select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    font-size: 1em;
+}
+
+/* --- FOOTER FIXO --- */
+footer {
+    width: 100%;
+    background: var(--grad-horizontal);
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.15);
+    z-index: 800;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .main-nav {
+        flex-wrap: wrap; 
+        justify-content: flex-start;
+        gap: 15px;
+    }
+    .clean-header {
+        flex-wrap: wrap;
+    }
+    .header-title {
+        display: none; 
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding-bottom: 90px;
+    }
+
+    .clean-header {
+        flex-direction: column;
+        padding: 15px;
+        gap: 10px;
+    }
+    .logo-area, .user-area {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .user-name {
+        display: none; 
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .main-nav {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+/* --- POPUP DE NOTIFICAÇÃO (Posição Direita) --- */
+.notification-popup {
+    position: fixed;
+    bottom: 60px; 
+    right: 20px; 
+    left: auto; 
+    width: 300px;
+    background: var(--card-bg); 
+    border: 1px solid var(--primary-gold);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    z-index: 1000; 
+    transition: opacity 0.4s, transform 0.4s;
+    
+    /* Configuração inicial (escondido) */
+    opacity: 0;
+    transform: translateX(100%); 
+}
+
+/* Classes de visibilidade controladas por JS */
+.notification-popup.hidden-js {
+    display: none;
+}
+
+.notification-popup.visible-right {
+    opacity: 1;
+    transform: translateX(0); 
+}
+
+.notification-title {
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.popup-link {
+    display: block;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.popup-link:hover {
+    color: var(--primary-gold);
+    text-decoration: underline;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #888;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #000;
+}

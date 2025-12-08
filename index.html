@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AndCont - Portal do Colaborador</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    
+    <header class="clean-header">
+        <div class="logo-area">
+            <img src="degrade.png" alt="Logo AndCont" class="site-logo">
+            <h1 class="header-title">Portal Colaborador</h1>
+        </div>
+        
+        <nav class="main-nav">
+            <a href="#home" class="nav-item active">Início</a>
+            <a href="#arquivo" class="nav-item filter-nav" data-filter="Notícia">Notícias</a>
+            <a href="#arquivo" class="nav-item filter-nav" data-filter="Política">RH & Políticas</a>
+            <a href="#arquivo" class="nav-item filter-nav" data-filter="Evento">Eventos</a>
+  
+        </nav>
+
+        <div class="user-area">
+            <span class="user-name">Olá, AndConter's</span>
+            <button class="profile-btn" title="Minha Conta">👤</button>
+        </div>
+    </header>
+    
+    <div class="container">
+        
+        <div id="intranet-home" class="container">
+            <h1 class="page-main-title">Publicações em Destaque</h1> 
+            
+            <main class="dashboard-grid">
+
+                <section class="card-section noticias-quentinhas">
+                    <h2>🔥 Notícias Quentíssimas</h2>
+                    <ul class="clean-list">
+                        <li><a href="#" class="item-link" data-id="novo-ponto">📢 Lançamento do **novo sistema de ponto**. Clique para saber mais!</a></li>
+                        <li><a href="#" class="item-link" data-id="aviso-ferias">⛱️ Aviso: Agendamento de Férias 2026</a></li>
+                    </ul>
+                </section>
+<div id="new-post-notification" class="notification-popup visible-right">
+    <span id="close-popup-btn" class="close-btn">&times;</span> 
+    
+    <p class="notification-title">🔔 Nova Publicação!</p>
+    
+    <a href="#" id="popup-link" class="popup-link item-link" data-id="gincana">
+        <span id="popup-text">Lançamento do novo sistema de ponto. Clique aqui!</span>
+    </a>
+</div>
+                <section class="card-section">
+                    <h2>🎯 Acessos Essenciais</h2>
+                    <ul class="clean-list">
+                        <li><a href="#" class="item-link" data-id="o-que-devo-saber">❓ O que devo saber?! (Guia Rápido)</a></li>
+                        <li><a href="#" class="item-link" data-id="ramais">☎️ Ramais e Contatos Internos</a></li>
+                        <li><a href="#" class="item-link" data-id="cursos-acessos">📚 Cursos e Plataformas de Treinamento</a></li>
+                        <li><a href="#" class="item-link" data-id="ponto-banco">🕒 Ponto Eletrônico e Banco de Horas</a></li>
+                    </ul>
+                </section>
+                
+                <section class="card-section rh-politicas-card">
+                    <h2>🌱 Recursos Humanos & Políticas</h2>
+                    <div class="acordeao">
+                        <h3 class="acordeao-header"><span>📜 Políticas Internas</span></h3>
+                        <ul class="acordeao-content clean-list">
+                            <li><a href="#" class="item-link" data-id="codigo-conduta">Código de Conduta e Ética</a></li>
+                            <li><a href="#" class="item-link" data-id="politica-emprestimo">Política de Empréstimo Consignado</a></li>
+                            <li><a href="#" class="item-link" data-id="lgpd">Compliance e LGPD</a></li>
+                        </ul>
+                    </div>
+                    <div class="acordeao">
+                        <h3 class="acordeao-header"><span>🗂️ Procedimentos</span></h3>
+                        <ul class="acordeao-content clean-list">
+                            <li><a href="#" class="item-link" data-id="gestao-beneficios">Gestão de benefícios e ferramentas</a></li>
+                            <li><a href="#" class="item-link" data-id="uso-celular">Regras para Uso de Celular Corporativo</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="card-section links-externos">
+                    <h2>🔗 Links Úteis</h2>
+                    <ul class="clean-list">
+                        <li><a href="#" target="_blank">↗️ Portal Cliente (andcont Home)</a></li>
+                        <li><a href="#" target="_blank">📷 Instagram Corporativo</a></li>
+                        <li><a href="#" target="_blank">📧 Webmail Corporativo</a></li> 
+                    </ul>
+                </section>
+
+                <section class="card-section eventos">
+                    <h2>🎉 Eventos e Novidades</h2>
+                    <div class="acordeao">
+                        <h3 class="acordeao-header"><span>O que está rolando na And?</span></h3>
+                        <ul class="acordeao-content clean-list open">
+                            <li><a href="#" class="item-link" data-id="gincana">🥳 Gincana de Fim de Ano (Regras e Equipes)</a></li>
+                        </ul>
+                    </div>
+                    <div class="acordeao">
+                        <h3 class="acordeao-header"><span>🗓️ Veja o que já rolou!</span></h3>
+                        <ul class="acordeao-content clean-list">
+                            <li><a href="#" class="item-link" data-id="setembro">Recap - Setembro</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div> 
+        
+        <section id="publicacao-page" class="hidden-page">
+            <div class="publicacao-header">
+                <button id="voltarBtn" class="back-button">← Voltar para o Dashboard</button>
+                <h1 id="publicacaoTitulo" class="page-title"></h1>
+                <p id="publicacaoData" class="page-date"></p>
+            </div>
+            <div id="publicacaoTexto" class="publicacao-content">
+            </div>
+        </section>
+
+        <section id="timeline-page" class="hidden-page">
+            <div class="timeline-header publicacao-header">
+                <button id="voltarTimelineBtn" class="back-button">← Voltar para o Dashboard</button>
+                <h1 class="page-title">📁 Arquivo e Linha do Tempo AndCont</h1>
+                <p class="page-date">Todas as notícias, comunicados e eventos em um só lugar.</p>
+            </div>
+            
+            <div id="timeline-content" class="timeline-content">
+                </div>
+        </section>
+
+    </div>
+    
+    <footer>
+        <p>Desenvolvido com 💚 | &copy; 2025 AndCont. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
