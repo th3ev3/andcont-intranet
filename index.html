@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AndCont - Portal do Colaborador</title>
     <link rel="stylesheet" href="styles.css"> 
+    <link rel="icon" type="image/png" href="degrade.png">
 </head>
 <body>
     
@@ -17,7 +18,7 @@
         <nav class="main-nav">
             <a href="#home" class="nav-item active">Início</a>
             <a href="#arquivo" class="nav-item filter-nav" data-filter="Notícia">Notícias</a>
-            <a href="#arquivo" class="nav-item filter-nav" data-filter="Política">RH & Políticas</a>
+            <a href="#arquivo" class="nav-item filter-nav" data-filter="RH">RH</a>
             <a href="#arquivo" class="nav-item filter-nav" data-filter="Evento">Eventos</a>
         </nav>
 
@@ -46,47 +47,50 @@
                     
                     <p class="notification-title">🔔 Nova Publicação!</p>
                     
-                    <a href="#" id="popup-link" class="popup-link item-link" data-id="gincana">
-                        <span id="popup-text">Lançamento do novo sistema de ponto. Clique aqui!</span>
+                    <a href="#" id="popup-link" class="popup-link item-link" data-id="telefone-rosa">
+                        <span id="popup-text">Telefone Rosinha. Clique aqui!</span>
                     </a>
                 </div>
 
                 <section class="card-section">
-                    <h2>🎯 Acessos Essenciais</h2>
+                    <h2>🎯 Informações e Acessos</h2>
                     <ul class="clean-list">
-                        <li><a href="#" class="item-link" data-id="o-que-devo-saber">❓ O que devo saber?! (Guia Rápido)</a></li>
+                        <li><a href="#" class="item-link" data-id="saber">❓ O que devo saber?!</a></li>
                         <li><a href="#" class="item-link" data-id="ramais">☎️ Ramais e Contatos Internos</a></li>
                         <li><a href="#" class="item-link" data-id="cursos-acessos">📚 Cursos e Plataformas de Treinamento</a></li>
-                        <li><a href="#" class="item-link" data-id="ponto-banco">🕒 Ponto Eletrônico e Banco de Horas</a></li>
+                        <li><a href="#" class="item-link" data-id="banco-horas">🕒 Ponto Eletrônico e Banco de Horas</a></li>
                     </ul>
                 </section>
                 
                 <section class="card-section rh-politicas-card">
-                    <h2>🌱 Recursos Humanos & Políticas</h2>
+                    <h2>🌱 Cantinho do RH</h2>
                     <div class="acordeao">
                         <h3 class="acordeao-header"><span>📜 Políticas Internas</span></h3>
                         <ul class="acordeao-content clean-list open">
                             <li><a href="#" class="item-link" data-id="codigo-conduta">Código de Conduta e Ética</a></li>
                             <li><a href="#" class="item-link" data-id="politica-emprestimo">Política de Empréstimo Consignado</a></li>
-                            <li><a href="#" class="item-link" data-id="lgpd">Compliance e LGPD</a></li>
+                            <li><a href="#" class="item-link" data-id="lgpd">LGPD</a></li>
+                            <li><a href="#" class="item-link" data-id="banco-horas">Ponto Eletrônico e Banco de Horas</a></li>
+
                         </ul>
                     </div>
                     <div class="acordeao">
                         <h3 class="acordeao-header"><span>🗂️ Procedimentos</span></h3>
                         <ul class="acordeao-content clean-list">
                             <li><a href="#" class="item-link" data-id="gestao-beneficios">Gestão de benefícios e ferramentas</a></li>
-                            <li><a href="#" class="item-link" data-id="uso-celular">Regras para Uso de Celular Corporativo</a></li>
+                            <li><a href="#" class="item-link" data-id="uso-celular">Regras para Uso de Celular</a></li>
+                            <li><a href="#" class="item-link" data-id="equipamentos-ti">Boas Práticas com Equipamentos!</a></li>
+
                         </ul>
                     </div>
-                    <a href="#arquivo" class="ver-mais-btn filter-nav" data-filter="Política">Ver Todas as Políticas →</a>
+                    <a href="#arquivo" class="ver-mais-btn filter-nav" data-filter="RH">Ver publicações RH →</a>
                 </section>
 
                 <section class="card-section links-externos">
                     <h2>🔗 Links Úteis</h2>
                     <ul class="clean-list">
-                        <li><a href="#" target="_blank">↗️ Portal Cliente (andcont Home)</a></li>
-                        <li><a href="#" target="_blank">📷 Instagram Corporativo</a></li>
-                        <li><a href="#" target="_blank">📧 Webmail Corporativo</a></li> 
+                        <li><a href="https://andcont.com.br/" target="_blank">↗️ Site AndCont</a></li>
+                        <li><a href="https://www.instagram.com/andcont.oficial/" target="_blank">📷 Instagram </a></li>
                     </ul>
                 </section>
 
@@ -98,9 +102,19 @@
                             </ul>
                     </div>
                     <div class="acordeao">
-                        <h3 class="acordeao-header"><span>🗓️ Veja o que já rolou!</span></h3>
+                        <h3 class="acordeao-header"><span>Veja o que já rolou!</span></h3>
                         <ul class="acordeao-content clean-list">
-                            <li><a href="#" class="item-link" data-id="setembro">Recap - Setembro</a></li>
+<li class="recap-setembro">
+    <div class="acordeao">
+        <h3 class="acordeao-header"><span>Recap - Setembro</span></h3>
+
+        <ul class="acordeao-content clean-list">
+            <li><a href="#" class="item-link" data-id="aconteceu-andcont">O que aconteceu na AndCont no mês</a></li>
+            <li><a href="#" class="item-link" data-id="plano-de-saude">Planos de Saúde</a></li>
+            <li><a href="#" class="item-link" data-id="guia-stories">Guia de stories</a></li>
+        </ul>
+    </div>
+</li>
                         </ul>
                     </div>
                     <a href="#arquivo" class="ver-mais-btn filter-nav" data-filter="Evento">Ver Todos os Eventos →</a>
