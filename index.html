@@ -256,7 +256,24 @@
     <button onclick="setTheme('midnight_glow')">🌌 Balanço Noturno</button>
     <button onclick="setTheme('peachy_dream')">🍑 Benefícios RH</button>
     <button onclick="setTheme('mystic_forest')">🌲 Raízes Jurídicas</button>
+<button onclick="setTheme('ocean_breeze')">🌬️ Brisa Estratégica</button>
+<button onclick="setTheme('citrus_twist')">🍋 Agilidade Operacional</button>
+<button onclick="setTheme('midnight_glow')">🌑 Foco Noturno</button>
+<button onclick="setTheme('peachy_dream')">🍑 Suavidade Tributária</button>
+<button onclick="setTheme('mystic_forest')">🌲 Solidez Sustentável</button>
 
+<button onclick="setTheme('andcont')">🚀 AndCont Premium</button>
+<button onclick="setTheme('serenity')">💎 Serenidade Financeira</button>
+<button onclick="setTheme('apricot')">🍑 Equilíbrio de Contas</button>
+<button onclick="setTheme('emerald_mist')">🌿 Fluxo de Caixa</button>
+<button onclick="setTheme('rose_gold')">✨ Lucratividade Rose</button>
+<button onclick="setTheme('fresh_lemon')">🍋 Vitalidade Empresarial</button>
+<button onclick="setTheme('champagne')">🥂 Sucesso Platinum</button>
+<button onclick="setTheme('velvet_blue')">🟦 Governança Corporativa</button>
+<button onclick="setTheme('morning_leaf')">🍃 Crescimento Orgânico</button>
+<button onclick="setTheme('sunset_relax')">🌇 Fechamento Mensal</button>
+<button onclick="setTheme('desert_sand')">🏜️ Resiliência no Setor</button>
+<button onclick="setTheme('lavender_soft')">💜 Gestão Humanizada</button>
     <h4>⚡ Temas Vibrantes</h4>
 <button onclick="setTheme('neon_pulse')">🌟 Contabil Digital</button>
 <button onclick="setTheme('electric_sky')">⚡ Fiscal Ágil</button>
@@ -278,6 +295,8 @@
 <button onclick="setTheme('turquoise_dream')">💧 Liquidez Total</button>
 <button onclick="setTheme('lava_burst')">🌋 Expansão AndCont</button>
 <button onclick="setTheme('rainbow_fusion')">🌈 Integração de Deptos</button>
+
+
     </div>
 
     <script>
@@ -287,45 +306,47 @@ const panel = document.getElementById('themePanel');
 
 /* 🎨 Configuração dos Temas Suaves */
 const themes = {
-    andcont: ["#ff7a00", "#ffb100", "#ff006a"],
-    serenity: ["#a8c0ff", "#b2fefa", "#cba2ff"],
-    apricot: ["#f6d365", "#fda085", "#f38181"],
-    emerald_mist: ["#43e97b", "#38f9d7", "#5eead4"],
-    rose_gold: ["#e0c3fc", "#8ec5fc", "#fbc2eb"],
-    fresh_lemon: ["#84fab0", "#8fd3f4", "#2ec1ac"],
-    champagne: ["#d4a373", "#faedcd", "#e9edc9"],
-    velvet_blue: ["#051937", "#004d7a", "#008793"],
-    morning_leaf: ["#93fb9d", "#09adfe", "#34d399"],
-    sunset_relax: ["#ee9ca7", "#ffdde1", "#f6d365"],
-    desert_sand: ["#ed6ea0", "#ec8c69", "#f7b42c"],
-    lavender_soft: ["#c471ed", "#f64f59", "#12c2e9"],
-     neon_pulse: ["#ff00ff", "#00ffff", "#ffea00"],     // Neon rosa, ciano e amarelo
-    electric_sky: ["#0ff", "#f0f", "#ff0"],            // Azul elétrico, magenta e amarelo
-    fiery_orange: ["#ff3c00", "#ff9000", "#ffd300"],   // Laranja intenso
-    jungle_fever: ["#00ff00", "#00aa55", "#33ff99"],   // Verde neon e limão
-    cyberpunk: ["#ff0055", "#00ffea", "#ff9900"],      // Cores estilo cyberpunk
-    tropical_vibe: ["#ff0066", "#ffcc00", "#00ff99"],  // Rosa choque, amarelo e verde vibrante
-    midnight_rave: ["#6a00ff", "#ff00aa", "#00ffff"],  // Roxo, magenta e azul neon
-    lava_lamp: ["#ff0000", "#ff7f00", "#ffff00"],      // Vermelho quente, laranja e amarelo
-    aurora_boreal: ["#00ffcc", "#0077ff", "#ff00cc"],  // Verde neon, azul e rosa neon
-    rainbow_dash: ["#ff0000", "#ff9900", "#00ff00"],   // Vermelho, laranja e verde vivo
-     sunset_fire: ["rgb(255,94,77)", "rgb(255,149,0)", "rgb(255,212,0)"],       // Vermelho-laranja intenso
-    ocean_flash: ["rgb(0,204,255)", "rgb(0,102,255)", "rgb(0,255,204)"],       // Azul turquesa vibrante
-    neon_candy: ["rgb(255,0,128)", "rgb(255,204,0)", "rgb(0,255,255)"],        // Rosa neon, amarelo e ciano
-    electric_lime: ["rgb(204,255,0)", "rgb(153,255,0)", "rgb(0,255,51)"],      // Verde limão forte
-    hot_pink_wave: ["rgb(255,20,147)", "rgb(255,105,180)", "rgb(255,182,193)"],// Variação rosa neon
-    tropical_sunset: ["rgb(255,77,77)", "rgb(255,179,77)", "rgb(255,255,77)"], // Vermelho, laranja e amarelo
-    cosmic_purple: ["rgb(102,0,255)", "rgb(153,51,255)", "rgb(204,102,255)"],  // Roxos elétricos
-    turquoise_dream: ["rgb(0,255,255)", "rgb(0,204,204)", "rgb(0,153,153)"],   // Turquesa profundo
-    lava_burst: ["rgb(255,51,0)", "rgb(255,102,0)", "rgb(255,153,0)"],          // Vermelho-laranja forte
-    rainbow_fusion: ["rgb(255,0,0)", "rgb(255,127,0)", "rgb(127,255,0)"],       // Vermelho, laranja e verde vivo
+   andcont: ["#ff4e50", "#f9d423", "#ff006a"], 
+    serenity: ["#a1c4fd", "#c2e9fb", "#d4fc79"],
+    apricot: ["#ff9a9e", "#fecfef", "#feada6"],
+    emerald_mist: ["#00cdac", "#8ddad5", "#02aab0"],
+    rose_gold: ["#f6d365", "#fda085", "#f08080"],
+    fresh_lemon: ["#d4fc79", "#96e6a1", "#00b09b"],
+    champagne: ["#fdfcfb", "#e2d1c3", "#c7b198"],
+    velvet_blue: ["#1e3c72", "#2a5298", "#2193b0"],
+    morning_leaf: ["#11998e", "#38ef7d", "#a4e4d4"],
+    sunset_relax: ["#ff758c", "#ff7eb3", "#fad0c4"],
+    desert_sand: ["#f093fb", "#f5576c", "#ff0844"],
+    lavender_soft: ["#667eea", "#764ba2", "#6B8DD6"],
+    
+    neon_pulse: ["#f80759", "#bc4e9c", "#00dbde"], 
+    electric_sky: ["#4facfe", "#00f2fe", "#43e97b"], 
+    fiery_orange: ["#fa709a", "#fee140", "#ff5858"], 
+    jungle_fever: ["#34e89e", "#0f3443", "#00c9ff"], 
+    cyberpunk: ["#f953c6", "#b91d73", "#70e1f5"], 
+    tropical_vibe: ["#f83600", "#f9d423", "#00d2ff"], 
+    midnight_rave: ["#8e2de2", "#4a00e0", "#ff0080"], 
+    lava_lamp: ["#f12711", "#f5af19", "#ed1c24"], 
+    aurora_boreal: ["#00c9ff", "#92fe9d", "#0072ff"], 
+    rainbow_dash: ["#ff0844", "#ffb199", "#2af598"], 
 
-    /* Novos temas */
-    ocean_breeze: ["#00c6ff", "#0072ff", "#00f5a0"],
-    citrus_twist: ["#ff9966", "#ff5e62", "#ffb347"],
-    midnight_glow: ["#0f2027", "#203a43", "#2c5364"],
-    peachy_dream: ["#fbc2eb", "#a6c1ee", "#ffecd2"],
-    mystic_forest: ["#134e5e", "#71b280", "#88d3ce"]
+    sunset_fire: ["rgb(255, 78, 80)", "rgb(249, 212, 35)", "rgb(255, 140, 0)"], 
+    ocean_flash: ["rgb(33, 147, 176)", "rgb(109, 213, 237)", "rgb(0, 128, 128)"], 
+    neon_candy: ["rgb(131, 58, 180)", "rgb(253, 29, 29)", "rgb(252, 176, 69)"], 
+    electric_lime: ["rgb(173, 255, 47)", "rgb(50, 205, 50)", "rgb(0, 255, 127)"], 
+    hot_pink_wave: ["rgb(255, 0, 153)", "rgb(255, 0, 255)", "rgb(153, 0, 255)"],
+    tropical_sunset: ["rgb(255, 81, 47)", "rgb(221, 36, 118)", "rgb(255, 138, 0)"], 
+    cosmic_purple: ["rgb(44, 62, 80)", "rgb(76, 161, 175)", "rgb(142, 68, 173)"], 
+    turquoise_dream: ["rgb(19, 106, 138)", "rgb(38, 120, 113)", "rgb(56, 133, 87)"], 
+    lava_burst: ["rgb(235, 51, 73)", "rgb(244, 92, 67)", "rgb(255, 165, 0)"], 
+    rainbow_fusion: ["rgb(0, 180, 219)", "rgb(0, 131, 176)", "rgb(142, 45, 226)"],
+
+    /* Novos temas melhorados */
+    ocean_breeze: ["#2193b0", "#6dd5ed", "#1c92d2"],
+    citrus_twist: ["#fdc830", "#f37335", "#ffc300"],
+    midnight_glow: ["#232526", "#414345", "#000000"],
+    peachy_dream: ["#ed4264", "#ffedbc", "#ff9a9e"],
+    mystic_forest: ["#56ab2f", "#a8e063", "#248f24"]
 
 };
 
