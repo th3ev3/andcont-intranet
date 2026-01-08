@@ -11,7 +11,7 @@
     
     <header class="clean-header">
         <div class="logo-area">
-            <img src="degrade.png" alt="Logo AndCont" class="site-logo">
+            <img src="degrade2.png" alt="Logo AndCont" class="site-logo">
             <h1 class="header-title">Portal do Colaborador</h1>
         </div>
         
@@ -148,7 +148,238 @@
     <footer>
         <p>Desenvolvido com 💚 | &copy; 2025 AndCont. Todos os direitos reservados.</p>
     </footer>
+<style>
+        :root {
+            /* Variáveis iniciais */
+            --primary-orange: #ff7a00;
+            --primary-gold: #ffb100;
+            --primary-magenta: #ff006a;
+            --grad-horizontal: linear-gradient(270deg, var(--primary-orange), var(--primary-gold), var(--primary-magenta), var(--primary-orange));
+        }
+
+        /* ======================== ANIMAÇÃO DE FLUXO ======================== */
+        @keyframes fluidGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Atributo para aplicar em qualquer elemento (Botão, Header, Cards, Footer) */
+        [data-animated-gradient] {
+            background-size: 300% 300% !important;
+            animation: fluidGradient 10s ease infinite !important;
+            transition: background 1.5s ease, color 0.5s ease; /* Troca de tema suave */
+        }
+
+        /* ======================== BOTÃO ENGRENAGEM ======================== */
+        .theme-gear {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            z-index: 9999;
+            user-select: none;
+            transition: transform 0.3s ease;
+        }
+        .theme-gear:hover { transform: rotate(90deg) scale(1.1); }
+
+        /* ======================== PAINEL DE TEMAS ======================== */
+        .theme-panel {
+            position: fixed;
+            bottom: 160px;
+            right: 20px;
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            display: none; /* Controlado pelo JS */
+            flex-direction: column;
+            gap: 8px;
+            z-index: 9998;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .theme-panel h3 { margin: 0 0 12px; font-size: 1.1em; color: #444; text-align: center; }
+        
+        .theme-panel button {
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            cursor: pointer;
+            font-weight: 600;
+            background: #f9f9f9;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s;
+        }
+        .theme-panel button:hover {
+            background: #fff;
+            transform: translateX(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-color: #ddd;
+        }
+
+        /* Estilização da scrollbar do painel */
+        .theme-panel::-webkit-scrollbar { width: 5px; }
+        .theme-panel::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
+    </style>
+    <div class="theme-gear" id="openTheme" data-animated-gradient>⚙️</div>
+
+    <div class="theme-panel" id="themePanel">
+        <h3>🎨 Escolha um Estilo</h3>
+<button onclick="setTheme('andcont')">🏢 AndCont Home</button>
+    <button onclick="setTheme('serenity')">📊 Contabilidade Geral</button>
+    <button onclick="setTheme('apricot')">🧾 Fiscal & Tributos</button>
+    <button onclick="setTheme('emerald_mist')">👥 Recursos Humanos</button>
+    <button onclick="setTheme('rose_gold')">📝 Depto. Pessoal</button>
+    <button onclick="setTheme('fresh_lemon')">🏛️ Societário</button>
+    <button onclick="setTheme('champagne')">💰 Financeiro BPO</button>
+    <button onclick="setTheme('velvet_blue')">🤝 Comercial & Parcerias</button>
+    <button onclick="setTheme('morning_leaf')">⚖️ Jurídico & Compliance</button>
+    <button onclick="setTheme('sunset_relax')">📈 Auditoria Contábil</button>
+    <button onclick="setTheme('desert_sand')">📜 Regularização (CEBAS)</button>
+    <button onclick="setTheme('lavender_soft')">🔮 Consultoria Estratégica</button>
+    <button onclick="setTheme('ocean_breeze')">🌊 Fluxo de Caixa</button>
+    <button onclick="setTheme('citrus_twist')">🍊 Gestão de Talentos</button>
+    <button onclick="setTheme('midnight_glow')">🌌 Balanço Noturno</button>
+    <button onclick="setTheme('peachy_dream')">🍑 Benefícios RH</button>
+    <button onclick="setTheme('mystic_forest')">🌲 Raízes Jurídicas</button>
+
+    <h4>⚡ Temas Vibrantes</h4>
+<button onclick="setTheme('neon_pulse')">🌟 Contabil Digital</button>
+<button onclick="setTheme('electric_sky')">⚡ Fiscal Ágil</button>
+<button onclick="setTheme('fiery_orange')">🔥 Comercial Proativo</button>
+<button onclick="setTheme('jungle_fever')">🌴 RH Dinâmico</button>
+<button onclick="setTheme('cyberpunk')">🎆 Inovação Societária</button>
+<button onclick="setTheme('tropical_vibe')"> Pineapple Finance</button>
+<button onclick="setTheme('midnight_rave')">🌌 Jurídico 24h</button>
+<button onclick="setTheme('lava_lamp')">🌋 Impacto no Setor</button>
+<button onclick="setTheme('aurora_boreal')">🌈 Transparência Fiscal</button>
+<button onclick="setTheme('rainbow_dash')">🌈 Diversidade no DP</button>
+<button onclick="setTheme('sunset_fire')">🔥 Meta Comercial</button>
+<button onclick="setTheme('ocean_flash')">🌊 Onda Financeira</button>
+<button onclick="setTheme('neon_candy')">🍬 Sucesso do Cliente</button>
+<button onclick="setTheme('electric_lime')">🍋 Auditoria Neon</button>
+<button onclick="setTheme('hot_pink_wave')">💖 Coração da Empresa</button>
+<button onclick="setTheme('tropical_sunset')">🌅 Horizonte Contábil</button>
+<button onclick="setTheme('cosmic_purple')">🌌 Universo Jurídico</button>
+<button onclick="setTheme('turquoise_dream')">💧 Liquidez Total</button>
+<button onclick="setTheme('lava_burst')">🌋 Expansão AndCont</button>
+<button onclick="setTheme('rainbow_fusion')">🌈 Integração de Deptos</button>
+    </div>
+
+    <script>
+const root = document.documentElement;
+const gear = document.getElementById('openTheme');
+const panel = document.getElementById('themePanel');
+
+/* 🎨 Configuração dos Temas Suaves */
+const themes = {
+    andcont: ["#ff7a00", "#ffb100", "#ff006a"],
+    serenity: ["#a8c0ff", "#b2fefa", "#cba2ff"],
+    apricot: ["#f6d365", "#fda085", "#f38181"],
+    emerald_mist: ["#43e97b", "#38f9d7", "#5eead4"],
+    rose_gold: ["#e0c3fc", "#8ec5fc", "#fbc2eb"],
+    fresh_lemon: ["#84fab0", "#8fd3f4", "#2ec1ac"],
+    champagne: ["#d4a373", "#faedcd", "#e9edc9"],
+    velvet_blue: ["#051937", "#004d7a", "#008793"],
+    morning_leaf: ["#93fb9d", "#09adfe", "#34d399"],
+    sunset_relax: ["#ee9ca7", "#ffdde1", "#f6d365"],
+    desert_sand: ["#ed6ea0", "#ec8c69", "#f7b42c"],
+    lavender_soft: ["#c471ed", "#f64f59", "#12c2e9"],
+     neon_pulse: ["#ff00ff", "#00ffff", "#ffea00"],     // Neon rosa, ciano e amarelo
+    electric_sky: ["#0ff", "#f0f", "#ff0"],            // Azul elétrico, magenta e amarelo
+    fiery_orange: ["#ff3c00", "#ff9000", "#ffd300"],   // Laranja intenso
+    jungle_fever: ["#00ff00", "#00aa55", "#33ff99"],   // Verde neon e limão
+    cyberpunk: ["#ff0055", "#00ffea", "#ff9900"],      // Cores estilo cyberpunk
+    tropical_vibe: ["#ff0066", "#ffcc00", "#00ff99"],  // Rosa choque, amarelo e verde vibrante
+    midnight_rave: ["#6a00ff", "#ff00aa", "#00ffff"],  // Roxo, magenta e azul neon
+    lava_lamp: ["#ff0000", "#ff7f00", "#ffff00"],      // Vermelho quente, laranja e amarelo
+    aurora_boreal: ["#00ffcc", "#0077ff", "#ff00cc"],  // Verde neon, azul e rosa neon
+    rainbow_dash: ["#ff0000", "#ff9900", "#00ff00"],   // Vermelho, laranja e verde vivo
+     sunset_fire: ["rgb(255,94,77)", "rgb(255,149,0)", "rgb(255,212,0)"],       // Vermelho-laranja intenso
+    ocean_flash: ["rgb(0,204,255)", "rgb(0,102,255)", "rgb(0,255,204)"],       // Azul turquesa vibrante
+    neon_candy: ["rgb(255,0,128)", "rgb(255,204,0)", "rgb(0,255,255)"],        // Rosa neon, amarelo e ciano
+    electric_lime: ["rgb(204,255,0)", "rgb(153,255,0)", "rgb(0,255,51)"],      // Verde limão forte
+    hot_pink_wave: ["rgb(255,20,147)", "rgb(255,105,180)", "rgb(255,182,193)"],// Variação rosa neon
+    tropical_sunset: ["rgb(255,77,77)", "rgb(255,179,77)", "rgb(255,255,77)"], // Vermelho, laranja e amarelo
+    cosmic_purple: ["rgb(102,0,255)", "rgb(153,51,255)", "rgb(204,102,255)"],  // Roxos elétricos
+    turquoise_dream: ["rgb(0,255,255)", "rgb(0,204,204)", "rgb(0,153,153)"],   // Turquesa profundo
+    lava_burst: ["rgb(255,51,0)", "rgb(255,102,0)", "rgb(255,153,0)"],          // Vermelho-laranja forte
+    rainbow_fusion: ["rgb(255,0,0)", "rgb(255,127,0)", "rgb(127,255,0)"],       // Vermelho, laranja e verde vivo
+
+    /* Novos temas */
+    ocean_breeze: ["#00c6ff", "#0072ff", "#00f5a0"],
+    citrus_twist: ["#ff9966", "#ff5e62", "#ffb347"],
+    midnight_glow: ["#0f2027", "#203a43", "#2c5364"],
+    peachy_dream: ["#fbc2eb", "#a6c1ee", "#ffecd2"],
+    mystic_forest: ["#134e5e", "#71b280", "#88d3ce"]
+
+};
+
+/* 🔄 Função para Aplicar o Tema */
+function setTheme(themeKey) {
+    const colors = themes[themeKey];
+    if (!colors) return;
+
+    root.style.setProperty('--primary-orange', colors[0]);
+    root.style.setProperty('--primary-gold', colors[1]);
+    root.style.setProperty('--primary-magenta', colors[2]);
+
+    const gradString = `linear-gradient(270deg, ${colors[0]}, ${colors[1]}, ${colors[2]}, ${colors[0]})`;
+    root.style.setProperty('--grad-horizontal', gradString);
+
+    const animatedElements = document.querySelectorAll('[data-animated-gradient]');
+    animatedElements.forEach(el => {
+        el.style.background = gradString;
+        el.style.backgroundSize = "300% 300%";
+    });
+
+    localStorage.setItem('siteTheme', themeKey);
+}
+
+/* ⚙️ Abre / Fecha Painel */
+gear.addEventListener('click', e => {
+    e.stopPropagation();
+    panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+});
+
+document.addEventListener('click', e => {
+    if (!panel.contains(e.target) && e.target !== gear) {
+        panel.style.display = 'none';
+    }
+});
+
+/* 💾 Inicialização */
+function init() {
+    const targetSelectors = 'footer, .card, .header, .nav-bar';
+    document.querySelectorAll(targetSelectors).forEach(el => {
+        el.setAttribute('data-animated-gradient', '');
+    });
+
+    const savedTheme = localStorage.getItem('siteTheme') || 'andcont';
+    setTheme(savedTheme);
+}
+
+window.onload = init;
+</script>
+    
+
 
     <script src="scripts.js"></script>
+
+ 
 </body>
 </html>

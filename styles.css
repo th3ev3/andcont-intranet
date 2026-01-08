@@ -291,3 +291,85 @@ footer p { margin: 0; }
         transform: translateY(0); 
     }
 }
+
+
+
+/* ===============================
+   ⚙️ BOTÃO DE TEMA (ENGRENAGEM)
+   =============================== */
+
+.theme-gear {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    background: var(--grad-horizontal);
+    color: white;
+    font-size: 1.6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    z-index: 1200;
+    transition: transform 0.3s ease;
+}
+
+.theme-gear:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+
+/* ===============================
+   🎨 PAINEL DE TEMAS
+   =============================== */
+.theme-gear {
+    position: fixed;
+    bottom: 90px;
+    left: 20px; /* Alterado para o lado esquerdo */
+    width: 52px;
+    height: 52px;
+    background: var(--grad-horizontal);
+    color: white;
+    font-size: 1.6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    z-index: 1200;
+    transition: transform 0.3s ease;
+}
+.theme-gear:hover { transform: rotate(90deg) scale(1.1); }
+
+.theme-panel {
+    position: fixed;
+    bottom: 160px;
+    left: 20px; /* Painel acompanha o botão */
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+    width: 220px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1200;
+}
+.theme-panel h3 { margin: 0 0 10px; font-size: 1.1em; color: #333; }
+.theme-panel button {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: #f3f3f3;
+    transition: background 0.2s, transform 0.2s;
+}
+.theme-panel button:hover {
+    background: var(--grad-horizontal);
+    color: white;
+    transform: translateY(-2px);
+}

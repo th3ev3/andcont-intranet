@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
             tipo: "Notícia", 
             fonte: "RH",
             destaque: true,
+            imagem: "",
             texto: `Segue a escala atualizada para o revezamento do telefone rosinha.<br>
 Para visualizar o arquivo completo, <a href="https://file.notion.so/f/f/1fed86c6-e0b7-81fa-8f06-000318a01d88/b21b1192-bee4-4fa8-bcb3-9315602f6caa/Escala_telefone!.pdf?table=block&id=286d86c6-e0b7-8077-a242-c9b2a046d484&spaceId=1fed86c6-e0b7-81fa-8f06-000318a01d88&expirationTimestamp=1765260000000&signature=AWFFiErOgRrq1RH1pzvo0qAmHywQLAEuxEMoruLYtsI&downloadName=Escala+telefone%21.pdf" target="_blank"><strong>acesse aqui</strong></a>.`
 
@@ -357,7 +358,7 @@ Segue o link do nosso guia de stories do Instagram:<br>
    
     };
 
-    // -------------------------
+ // -------------------------
     // 2) Elementos do DOM (checagens)
     // -------------------------
     const intranetHome = document.getElementById('intranet-home');
@@ -511,8 +512,18 @@ Segue o link do nosso guia de stories do Instagram:<br>
         tituloEl.textContent = comunicado.titulo;
         dataEl.textContent = `Publicado em: ${comunicado.data || ''}`;
 
-        // Monta o HTML do texto principal
-        let html = toHTML(comunicado.texto || '');
+        // Inicia variável HTML
+        let html = '';
+
+        // --- Lógica de Imagem (NOVO) ---
+        if (comunicado.imagem) {
+            html += `<div style="text-align:center; margin-bottom:20px;">
+                        <img src="${comunicado.imagem}" alt="Imagem destaque" style="max-width:100%; height:auto; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                     </div>`;
+        }
+
+        // Adiciona texto formatado
+        html += toHTML(comunicado.texto || '');
 
         // Se houver publicacoes internas (ex: recap setembro), gera acordeão interno
         if (Array.isArray(comunicado.publicacoes) && comunicado.publicacoes.length) {
@@ -708,6 +719,3 @@ Segue o link do nosso guia de stories do Instagram:<br>
     }
 
 });
-
-
-
