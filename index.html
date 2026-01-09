@@ -12,7 +12,7 @@
     <header class="clean-header">
         <div class="logo-area">
             <img src="degrade2.png" alt="Logo AndCont" class="site-logo">
-            <h1 class="header-title">Portal do Colaborador</h1>
+            <h1 class="header-title">Intranet AndCont</h1>
         </div>
         
         <nav class="main-nav">
@@ -240,6 +240,8 @@
     <div class="theme-panel" id="themePanel">
         <h3>🎨 Escolha um Estilo</h3>
 <button onclick="setTheme('andcont')">🏢 AndCont Home</button>
+<button onclick="setTheme('andcontrgb')"> 🌈 RGB</button>
+
     <button onclick="setTheme('serenity')">📊 Contabilidade Geral</button>
     <button onclick="setTheme('apricot')">🧾 Fiscal & Tributos</button>
     <button onclick="setTheme('emerald_mist')">👥 Recursos Humanos</button>
@@ -298,15 +300,25 @@
 
 
     </div>
+<script>
+/* =====================================================
+   🎨 THEME SWITCHER – ANDCONT (ATUALIZADO)
+===================================================== */
 
-    <script>
-const root = document.documentElement;
-const gear = document.getElementById('openTheme');
+const root  = document.documentElement;
+const gear  = document.getElementById('openTheme');
 const panel = document.getElementById('themePanel');
 
-/* 🎨 Configuração dos Temas Suaves */
+/* 🎨 Configuração dos Temas */
 const themes = {
-   andcont: ["#ff4e50", "#f9d423", "#ff006a"], 
+    /* 🌈 Tema principal ANDCONT (com paradas exatas) */
+    andcontrgb: [
+        "#9cec03", // 0%
+        "#03adec", // 28%
+        "#5003ec", // 65%
+        "#ec0360"  // 100%
+    ],
+andcont: ["#ff4e50", "#f9d423", "#ff006a"],
     serenity: ["#a1c4fd", "#c2e9fb", "#d4fc79"],
     apricot: ["#ff9a9e", "#fecfef", "#feada6"],
     emerald_mist: ["#00cdac", "#8ddad5", "#02aab0"],
@@ -318,60 +330,84 @@ const themes = {
     sunset_relax: ["#ff758c", "#ff7eb3", "#fad0c4"],
     desert_sand: ["#f093fb", "#f5576c", "#ff0844"],
     lavender_soft: ["#667eea", "#764ba2", "#6B8DD6"],
-    
-    neon_pulse: ["#f80759", "#bc4e9c", "#00dbde"], 
-    electric_sky: ["#4facfe", "#00f2fe", "#43e97b"], 
-    fiery_orange: ["#fa709a", "#fee140", "#ff5858"], 
-    jungle_fever: ["#34e89e", "#0f3443", "#00c9ff"], 
-    cyberpunk: ["#f953c6", "#b91d73", "#70e1f5"], 
-    tropical_vibe: ["#f83600", "#f9d423", "#00d2ff"], 
-    midnight_rave: ["#8e2de2", "#4a00e0", "#ff0080"], 
-    lava_lamp: ["#f12711", "#f5af19", "#ed1c24"], 
-    aurora_boreal: ["#00c9ff", "#92fe9d", "#0072ff"], 
-    rainbow_dash: ["#ff0844", "#ffb199", "#2af598"], 
 
-    sunset_fire: ["rgb(255, 78, 80)", "rgb(249, 212, 35)", "rgb(255, 140, 0)"], 
-    ocean_flash: ["rgb(33, 147, 176)", "rgb(109, 213, 237)", "rgb(0, 128, 128)"], 
-    neon_candy: ["rgb(131, 58, 180)", "rgb(253, 29, 29)", "rgb(252, 176, 69)"], 
-    electric_lime: ["rgb(173, 255, 47)", "rgb(50, 205, 50)", "rgb(0, 255, 127)"], 
-    hot_pink_wave: ["rgb(255, 0, 153)", "rgb(255, 0, 255)", "rgb(153, 0, 255)"],
-    tropical_sunset: ["rgb(255, 81, 47)", "rgb(221, 36, 118)", "rgb(255, 138, 0)"], 
-    cosmic_purple: ["rgb(44, 62, 80)", "rgb(76, 161, 175)", "rgb(142, 68, 173)"], 
-    turquoise_dream: ["rgb(19, 106, 138)", "rgb(38, 120, 113)", "rgb(56, 133, 87)"], 
-    lava_burst: ["rgb(235, 51, 73)", "rgb(244, 92, 67)", "rgb(255, 165, 0)"], 
-    rainbow_fusion: ["rgb(0, 180, 219)", "rgb(0, 131, 176)", "rgb(142, 45, 226)"],
+    neon_pulse: ["#f80759", "#bc4e9c", "#00dbde"],
+    electric_sky: ["#4facfe", "#00f2fe", "#43e97b"],
+    fiery_orange: ["#fa709a", "#fee140", "#ff5858"],
+    jungle_fever: ["#34e89e", "#0f3443", "#00c9ff"],
+    cyberpunk: ["#f953c6", "#b91d73", "#70e1f5"],
+    tropical_vibe: ["#f83600", "#f9d423", "#00d2ff"],
+    midnight_rave: ["#8e2de2", "#4a00e0", "#ff0080"],
+    lava_lamp: ["#f12711", "#f5af19", "#ed1c24"],
+    aurora_boreal: ["#00c9ff", "#92fe9d", "#0072ff"],
+    rainbow_dash: ["#ff0844", "#ffb199", "#2af598"],
 
-    /* Novos temas melhorados */
+    sunset_fire: ["rgb(255,78,80)", "rgb(249,212,35)", "rgb(255,140,0)"],
+    ocean_flash: ["rgb(33,147,176)", "rgb(109,213,237)", "rgb(0,128,128)"],
+    neon_candy: ["rgb(131,58,180)", "rgb(253,29,29)", "rgb(252,176,69)"],
+    electric_lime: ["rgb(173,255,47)", "rgb(50,205,50)", "rgb(0,255,127)"],
+    hot_pink_wave: ["rgb(255,0,153)", "rgb(255,0,255)", "rgb(153,0,255)"],
+    tropical_sunset: ["rgb(255,81,47)", "rgb(221,36,118)", "rgb(255,138,0)"],
+    cosmic_purple: ["rgb(44,62,80)", "rgb(76,161,175)", "rgb(142,68,173)"],
+    turquoise_dream: ["rgb(19,106,138)", "rgb(38,120,113)", "rgb(56,133,87)"],
+    lava_burst: ["rgb(235,51,73)", "rgb(244,92,67)", "rgb(255,165,0)"],
+    rainbow_fusion: ["rgb(0,180,219)", "rgb(0,131,176)", "rgb(142,45,226)"],
+
+    /* Novos */
     ocean_breeze: ["#2193b0", "#6dd5ed", "#1c92d2"],
     citrus_twist: ["#fdc830", "#f37335", "#ffc300"],
     midnight_glow: ["#232526", "#414345", "#000000"],
     peachy_dream: ["#ed4264", "#ffedbc", "#ff9a9e"],
     mystic_forest: ["#56ab2f", "#a8e063", "#248f24"]
-
 };
 
-/* 🔄 Função para Aplicar o Tema */
+/* 🔄 Aplica Tema */
 function setTheme(themeKey) {
     const colors = themes[themeKey];
     if (!colors) return;
 
+    /* Variáveis base */
     root.style.setProperty('--primary-orange', colors[0]);
     root.style.setProperty('--primary-gold', colors[1]);
-    root.style.setProperty('--primary-magenta', colors[2]);
+    root.style.setProperty('--primary-magenta', colors[2] || colors[1]);
 
-    const gradString = `linear-gradient(270deg, ${colors[0]}, ${colors[1]}, ${colors[2]}, ${colors[0]})`;
-    root.style.setProperty('--grad-horizontal', gradString);
+    let gradient;
 
-    const animatedElements = document.querySelectorAll('[data-animated-gradient]');
-    animatedElements.forEach(el => {
-        el.style.background = gradString;
+    /* 🎯 ANDCONT com paradas fixas */
+    if (themeKey === 'andcont' && colors.length === 4) {
+        gradient = `
+            linear-gradient(
+                135deg,
+                ${colors[0]} 0%,
+                ${colors[1]} 28%,
+                ${colors[2]} 65%,
+                ${colors[3]} 100%
+            )
+        `;
+    } else {
+        /* 🌈 Padrão para os outros temas */
+        gradient = `
+            linear-gradient(
+                270deg,
+                ${colors[0]},
+                ${colors[1]},
+                ${colors[2]},
+                ${colors[0]}
+            )
+        `;
+    }
+
+    root.style.setProperty('--grad-horizontal', gradient);
+
+    document.querySelectorAll('[data-animated-gradient]').forEach(el => {
+        el.style.background = gradient;
         el.style.backgroundSize = "300% 300%";
     });
 
     localStorage.setItem('siteTheme', themeKey);
 }
 
-/* ⚙️ Abre / Fecha Painel */
+/* ⚙️ Painel de Temas */
 gear.addEventListener('click', e => {
     e.stopPropagation();
     panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
@@ -383,19 +419,20 @@ document.addEventListener('click', e => {
     }
 });
 
-/* 💾 Inicialização */
+/* 🚀 Inicialização */
 function init() {
-    const targetSelectors = 'footer, .card, .header, .nav-bar';
-    document.querySelectorAll(targetSelectors).forEach(el => {
+    const targets = 'footer, .card, .header, .nav-bar';
+    document.querySelectorAll(targets).forEach(el => {
         el.setAttribute('data-animated-gradient', '');
     });
 
-    const savedTheme = localStorage.getItem('siteTheme') || 'andcont';
-    setTheme(savedTheme);
+    const saved = localStorage.getItem('siteTheme') || 'andcont';
+    setTheme(saved);
 }
 
-window.onload = init;
+window.addEventListener('load', init);
 </script>
+
     
 
 
